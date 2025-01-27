@@ -1,10 +1,16 @@
+import { BrowserRouter, Route, Routes } from "react-router";
+import LoginPage from "./pages/LoginPage";
+import AdminPage from "./pages/AdminPage";
 import "./index.css";
 
 function App() {
   return (
-    <>
-      <h1 className="text-3xl font-bold underline">Lista de Desejo!</h1>
-    </>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/admin" element={<AdminPage />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
