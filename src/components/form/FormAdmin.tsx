@@ -1,5 +1,5 @@
 import { useState } from "react";
-import CardAdmin from "./CardAdmin";
+import CardAdmin from "../cards/CardAdmin";
 
 interface Wish {
   id: number;
