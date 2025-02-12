@@ -1,5 +1,6 @@
 import { useState } from "react";
 import CardAdmin from "../cards/CardAdmin";
+import { mockWishes } from "../../data/mockWishes";
 
 interface Wish {
   id: number;
@@ -9,7 +10,7 @@ interface Wish {
 }
 
 const FormAdmin = () => {
-  const [wishes, setWishes] = useState<Wish[]>([]);
+  const [wishes, setWishes] = useState<Wish[]>(mockWishes);
   const [newWish, setNewWish] = useState<Omit<Wish, "id">>({
     title: "",
     link: "",
@@ -19,7 +20,9 @@ const FormAdmin = () => {
   const handleAddWish = (e: React.FormEvent) => {
     e.preventDefault();
     if (!newWish.title || !newWish.link || !newWish.imageUrl) return;
+
     setWishes((prevWishes) => [...prevWishes, { id: Date.now(), ...newWish }]);
+
     setNewWish({ title: "", link: "", imageUrl: "" });
   };
 
@@ -76,6 +79,7 @@ const FormAdmin = () => {
           Adicionar Desejo
         </button>
       </form>
+
       <CardAdmin wishes={wishes} onDeleteWish={handleDeleteWish} />
     </section>
   );
