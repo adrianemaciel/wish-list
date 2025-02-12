@@ -1,25 +1,10 @@
 import { useState } from "react";
 import ButtonBackToLogin from "../components/buttons/ButtonBackToLogin";
-import CardGuet from "../components/cards/CardGuest";
-
-interface Wish {
-  id: number;
-  title: string;
-  link: string;
-  imageUrl: string;
-  isTaken: boolean;
-}
+import CardGuest from "../components/cards/CardGuest";
+import { mockWishes, Wish } from "../data/mockWishes";
 
 const GuestPage = () => {
-  const [wishes, setWishes] = useState<Wish[]>([
-    {
-      id: 1,
-      title: "A hora da estrela: Edição comemorativa",
-      link: "https://www.amazon.com.br/hora-estrela-Edi%C3%A7%C3%A3o-comemorativa/dp/6555320354",
-      imageUrl: "https://m.media-amazon.com/images/I/61TaHURu27L._SL1000_.jpg",
-      isTaken: false,
-    },
-  ]);
+  const [wishes, setWishes] = useState<Wish[]>(mockWishes);
 
   const handleMarkAsTaken = (id: number) => {
     setWishes(
@@ -35,7 +20,7 @@ const GuestPage = () => {
 
       <ButtonBackToLogin />
 
-      <CardGuet wishes={wishes} handleMarkAsTaken={handleMarkAsTaken} />
+      <CardGuest wishes={wishes} handleMarkAsTaken={handleMarkAsTaken} />
     </div>
   );
 };

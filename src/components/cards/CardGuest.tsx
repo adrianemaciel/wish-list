@@ -11,34 +11,32 @@ interface CardGuestProps {
   handleMarkAsTaken: (id: number) => void;
 }
 
-const CardGuet = ({ wishes, handleMarkAsTaken }: CardGuestProps) => {
+const CardGuest = ({ wishes, handleMarkAsTaken }: CardGuestProps) => {
   return (
     <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {wishes.map((wish) => (
         <div
           key={wish.id}
-          className={`max-w-sm rounded overflow-hidden shadow-lg ${
+          className={`max-w-sm bg-white rounded-lg overflow-hidden shadow-lg ${
             wish.isTaken ? "opacity-50" : ""
           }`}
         >
           <img
-            className="w-full object-cover"
+            className="w-full h-48 object-contain bg-gray-100"
             src={wish.imageUrl}
             alt={wish.title}
           />
           <div className="p-5">
             <h5 className="text-gray-500 text-xl mb-2">{wish.title}</h5>
             <div className="flex justify-start space-x-4 pt-4">
-              <button>
-                <a
-                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
-                  href={wish.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  Comprar
-                </a>
-              </button>
+              <a
+                className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
+                href={wish.link}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Comprar
+              </a>
               <button
                 className={`bg-green-500 text-white font-bold py-2 px-4 rounded ${
                   wish.isTaken
@@ -58,4 +56,4 @@ const CardGuet = ({ wishes, handleMarkAsTaken }: CardGuestProps) => {
   );
 };
 
-export default CardGuet;
+export default CardGuest;
